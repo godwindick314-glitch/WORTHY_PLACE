@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>WORTHY'S PLACE</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+<div class="brand">
+<div class="logo-circle">W</div>
+<div class="brand-text">
+<h1>WORTHY’S PLACE</h1>
+<p class="tag">Clothing • Bags • Jewellery</p>
+</div>
+</div>
+
+<div class="header-actions">
+<button id="exportBtn" class="btn outline">Export JSON</button>
+<input id="importFile" type="file" accept="application/json" style="display:none" />
+<button id="importBtn" class="btn outline">Import JSON</button>
+<button id="adminBtn" class="btn outline">Admin Panel</button>
+<button id="loginBtn" class="btn outline">Login / Register</button>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<h2>Elegant pieces. Timeless style.</h2>
+<p>Curated clothing, bags and jewellery — for the confident woman.</p>
+</div>
+</section>
+
+<!-- PRODUCT LIST -->
+<main>
+<section id="productSection" class="container">
+<h2>Available Products</h2>
+<div id="productList" class="product-grid"></div>
+</section>
+
+<!-- PAYMENT BOX -->
+<section id="paymentBox" class="hidden modal">
+<div class="modal-card">
+<button class="close-x" onclick="closePayment()">✕</button>
+<h3>Make Payment</h3>
+<p class="pay-note">Send payment to the account below, then click <strong>"I Have Paid"</strong>.</p>
+
+<div class="bank-card">
+<div><strong>Bank:</strong> Opay</div>
+<div><strong>Account name:</strong> Odot Idongesit Etukudo</div>
+<div class="acct-row">
+<div><strong>Account number:</strong> <span id="acctNumber">9071973364</span></div>
+<div>
+<button class="btn small" onclick="copyAccount()">Copy</button>
+</div>
+</div>
+</div>
+
+<div class="pay-actions">
+<button id="whatsappBtn" class="btn whatsapp" onclick="openWhatsApp()">Chat on WhatsApp</button>
+<button class="btn primary" onclick="markPaid()">I Have Paid</button>
+<button class="btn outline" onclick="closePayment()">Cancel</button>
+</div>
+</div>
+</section>
+
+<!-- TRANSACTION STATUS -->
+<section id="transactionStatus" class="hidden modal">
+<div class="modal-card">
+<button class="close-x" onclick="closeStatus()">✕</button>
+<h3>Transaction Successful 🎉</h3>
+<p id="txnMessage">Your payment has been received. Thank you for your purchase!</p>
+<div style="text-align:center; margin-top:12px;">
+<button class="btn primary" onclick="closeStatus()">Close</button>
+</div>
+</div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section id="adminPanel" class="hidden admin-box container">
+<div class="admin-inner">
+<div class="admin-left">
+<h3>Admin - Add Product</h3>
+<label>Product Name</label>
+<input id="adminName" placeholder="e.g. Blush Satin Handbag" />
+<label>Price (₦)</label>
+<input id="adminPrice" type="number" placeholder="e.g. 6500" />
+<label>Product Image</label>
+<input id="adminImage" type="file" accept="image/*" />
+<h3>Upload Logo / Brand</h3>
+<input type="file" id="logoUpload" accept="image/*" />
+<button class="btn primary" onclick="uploadLogo()">Upload</button>
+<div class="admin-actions">
+<button class="btn primary" onclick="addProduct()">Add Product</button>
+<button class="btn outline" onclick="closeAdmin()">Close Panel</button>
+</div>
+<h3>Sales Records</h3>
+<div id="salesRecords"></div>
+</div>
+<div class="admin-right">
+<h3>Quick Tips</h3>
+<ul>
+<li>Use clean photos with neutral backgrounds.</li>
+<li>Use round numbers for prices (e.g. 4000).</li>
+<li>Edit name, price, or image easily by clicking "Edit".</li>
+<li>Upload your logo to personalize the store.</li>
+<li>All sales are recorded automatically here.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- EDIT PRODUCT MODAL -->
+<section id="editModal" class="hidden modal">
+<div class="modal-card">
+<button class="close-x" onclick="closeEdit()">✕</button>
+<h3>Edit Product</h3>
+<label>Product Name</label>
+<input id="editName" />
+<label>Price (₦)</label>
+<input id="editPrice" type="number" />
+<label>Replace Image (optional)</label>
+<input id="editImage" type="file" accept="image/*" />
+<div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end;">
+<button class="btn outline" onclick="closeEdit()">Cancel</button>
+<button class="btn primary" onclick="saveEdit()">Save Changes</button>
+</div>
+</div>
+</section>
+
+<!-- LOGIN / REGISTER MODAL -->
+<section id="loginModal" class="hidden modal">
+<div class="modal-card">
+<button class="close-x" onclick="closeLogin()">✕</button>
+<h3 id="loginTitle">Login / Register</h3>
+<label>Email</label>
+<input id="loginEmail" placeholder="email@example.com" />
+<label>Password</label>
+<input id="loginPassword" type="password" placeholder="Password" />
+<div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end;">
+<button class="btn outline" onclick="registerUser()">Register</button>
+<button class="btn primary" onclick="loginUser()">Login</button>
+</div>
+<p id="loginMsg" style="margin-top:10px;color:red;"></p>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div>© WORTHY’S PLACE</div>
+<div class="footer-actions">
+<a class="footer-whatsapp" href="#" onclick="openWhatsApp(); return false;">Chat us on WhatsApp</a>
+</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
